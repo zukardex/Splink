@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+<style>
+	body{
+		display:flex;
+		align-items: center;
+		justify-content:center;
+		padding-top:50px;
+	}
+</style>
+
+<script src='https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.css' rel='stylesheet' />
+
+
+</head>
+<body>
+<p><p><p>
+<div id="mapid" style="width: 600px; height: 400px; position: relative;" class="leaflet-container leaflet-fade-anim leaflet-grab leaflet-touch-drag" tabindex="0"></div>
+ <script>
+let xco= 10.552897894816653;
+let yco=76.22189253292407;
+var map = L.map('mapid').setView([xco, yco ], 12);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+
+        function calculateDistance(lat1, lon1, lat2, lon2) {
+          //to calculate the distance between a sshop and a distributor
+          const R = 6371; // Earth's radius in kilometers
+          const dLat = (lat2 - lat1) * Math.PI / 180; // Difference in latitude
+          const dLon = (lon2 - lon1) * Math.PI / 180; // Difference in longitude
+          const a =
+            Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+            Math.sin(dLon / 2) * Math.sin(dLon / 2);
+          const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+          const distance = R * c; // Distance in kilometers
+          return Math.round(distance*100)/100;
+        }
+
+const shops = [
+"Sugar & Spice Delivery",
+  "Flour Power Distributors",
+  "Dough Delights Delivery",
+  "Tasty Treats Supply Co.",
+];
+const rates=["50 % of Rs.X", "Rs.X", "75% of Rs.X", "105% of Rs.X"];
+
+var shopIcon = L.icon({ //actually, distributorIcon
+		iconUrl: 'https://img.icons8.com/color/48/truck--v1.png',
+		
+		iconSize: [25,25]
+	});
+
+let dist1= shops[0]  + " <br>Distance: " + calculateDistance(xco,yco,10.580404614206753,76.26031847127716 ) + "km<br>Rate: " + rates[0];
+let dist2= shops[1]  + " <br>Distance: " + calculateDistance(xco,yco,10.551844017337908,76.22545780159894 )+ "km<br>Rate: " + rates[1];
+let dist3= shops[2]  + " <br>Distance: " + calculateDistance(xco,yco,10.542173987274285,76.17860820033003 )+ "km<br>Rate: " + rates[2];
+let dist4= shops[3]  + " <br>Distance: " + calculateDistance(xco,yco,10.55729799309269,76.20366993516261 )+ "km<br>Rate: " + rates[3];
+		L.marker([10.580404614206753,76.26031847127716], {icon :shopIcon}).addTo(map).bindPopup(dist1);
+
+		L.marker([10.551844017337908,76.22545780159894], {icon :shopIcon}).addTo(map).bindPopup(dist2);
+	
+		L.marker([10.542173987274285,76.17860820033003], {icon :shopIcon}).addTo(map).bindPopup(dist3);
+
+		L.marker([10.55729799309269,76.20366993516261], {icon :shopIcon}).addTo(map).bindPopup(dist4);
+
+
+    var shopIcon = L.icon({
+    iconUrl: 'https://img.icons8.com/ios/50/online-store.png',
+	
+    iconSize: [25,25]
+});
+
+        L.marker([xco-0.01, yco], {icon :shopIcon}).addTo(map);
+
+
+	
+
+
+</script>
+
+</body>
+</html>

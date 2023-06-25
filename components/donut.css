@@ -1,0 +1,41 @@
+.image-container img{
+    margin-right: 30px;
+    margin-left:100px;
+    height: 400px;
+    width: 400px;
+    object-fit: contain;
+    padding: 10px;
+    background:linear-gradient(30deg,#4161d4,#62ff64);
+    border-radius: 15%;
+    
+}
+.desc{
+    font-size: 3em;
+    position: absolute;
+    left:590px;
+top: 100px;}
+.desc > div {
+    margin-top: 70px;
+    font-size: 1.5rem;
+    margin-right: 20px;  
+}
+.review{
+    margin-top: 70px;
+    margin-left: 100px;
+    margin-right: 20px;
+    width:400px;
+}
+.review > p{
+    margin-top: 30px;
+}
+.button button{
+    font-size: 3em;
+    position: absolute;
+    left:700px;
+    top: 700px;
+    background:linear-gradient(95deg,#4161d4,#62ff64);;
+    color:#fff;
+    border : 0px;
+    border-radius: 25px;
+
+}

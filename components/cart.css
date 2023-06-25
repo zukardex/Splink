@@ -1,0 +1,45 @@
+h1{
+    margin-left: 10px;
+}
+.nav-link.active {
+  color: linear-gradient(95deg,#4161d4,#62ff64); /* Apply the desired color for the active page */
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius:15px;
+    background:linear-gradient(30deg,#4161d4,#62ff64);;
+    padding: 10px;
+    margin: 10px;
+  }
+  .item-image {
+    width: 100px;
+    margin-right: 10px;
+    padding: 1px;
+  }
+  .item-description {
+    flex-grow: 1;
+    
+  }
+  .rating {
+    color: #FFD700; /* Golden color */
+  }
+  .cart {
+    padding: 10px;
+    margin-top: 10px;
+    text-align: center;
+    text-decoration: linear-gradient(95deg,#4161d4,#62ff64);
+  }
+  .btn {
+    background-color: #fff;
+    color: #222;
+
+    border: none;
+    cursor: pointer;
+    padding: 7px;
+  }
+  .item-number {
+      font-size:  20px;
+  }
